@@ -3,7 +3,8 @@ const scrollPageToBottom = require('puppeteer-autoscroll-down')
 
 async function run() {
   const browser = await puppeteer.launch({
-    headless: true
+    headless: true,
+	  args: ['--no-sandbox']
   });
   var randomNo=Math.floor(Math.random() * (20 -10 + 1) + 10);
   const page = await browser.newPage();
