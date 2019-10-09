@@ -22,7 +22,7 @@ async function run() {
     });
 
   await page.waitFor(randomNo*1000);
-  const lastPosition = await scrollPageToBottom(page);
+  const lastPosition2 = await scrollPageToBottom(page);
   await page.waitFor(randomNo*1000);
   browser.close();
   
