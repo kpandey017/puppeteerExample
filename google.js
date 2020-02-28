@@ -4,7 +4,8 @@ let webpageHelper= require('./helper/webPage.helper')
 
 const google = async () => {
   const browser = await puppeteer.launch({
-    headless: false
+    headless: false,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
 
   let keyWords=['free doctor online','consult doctor online','online free doctor','ask free doctor online']
