@@ -5,7 +5,7 @@ let webpageHelper= require('./helper/webPage.helper')
 const fb = async () => {
   const browser = await puppeteer.launch({
     headless: false,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: ['--no-sandbox']
   });
 
   var randomNo=getRandomArbitrary(3,7);
