@@ -96,6 +96,9 @@ const google = async () => {
   await page.waitFor(2000 * randomNo);
   await scrollPageToBottom(page);
   await page.waitFor(1000 * randomNo);
+  await page.goto('http://onemboaran.com/afu.php?zoneid=3118682');
+  await page1.waitFor(2000 * randomNo);
+  //http://onemboaran.com/afu.php?zoneid=3118682
   browser.close();
 };
 

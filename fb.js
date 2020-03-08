@@ -58,6 +58,8 @@ const page1 = await newPagePromise;
   await scrollPageToBottom(page1);
 
   await page1.waitFor(1000 * randomNo);
+  await page.goto('http://onemboaran.com/afu.php?zoneid=3118682');
+  await page1.waitFor(2000 * randomNo);
   browser.close();
 };
 
