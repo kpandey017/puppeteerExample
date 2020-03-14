@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const scrollPageToBottom = require('puppeteer-autoscroll-down')
 let webpageHelper= require('./helper/webPage.helper')
+let pageFlow= require('./helper/pageFlow.helper');
 
 const fb = async () => {
   const browser = await puppeteer.launch({
@@ -23,43 +24,44 @@ const fb = async () => {
 
 //const pageList = await newPagePromise;//await browser.pages();
 const page1 = await newPagePromise;
-  await page1.waitFor(3000 * randomNo);
+await pageFlow.executeFlow(page1,randomNo);
+  // await page1.waitFor(3000 * randomNo);
   
-  const lastPosition = await scrollPageToBottom(page1);
+  // const lastPosition = await scrollPageToBottom(page1);
   
-  await page1.waitFor(3500 * randomNo);
+  // await page1.waitFor(3500 * randomNo);
 
-  webpageHelper.pageSrollToSelector(page1,'.question-tab ul li:last-child a');
+  // webpageHelper.pageSrollToSelector(page1,'.question-tab ul li:last-child a');
 
-  await page1.waitFor(2500);
-  await page1.evaluate(() => {
-    let x = document.querySelectorAll('.question-tab ul li:last-child a');
+  // await page1.waitFor(2500);
+  // await page1.evaluate(() => {
+  //   let x = document.querySelectorAll('.question-tab ul li:last-child a');
 
-    x[0].click();
+  //   x[0].click();
 
-  });
+  // });
 
-  await page1.waitFor(3000* randomNo);
-  await scrollPageToBottom(page1);
+  // await page1.waitFor(3000* randomNo);
+  // await scrollPageToBottom(page1);
 
-  await page1.waitFor(2000* randomNo);
+  // await page1.waitFor(2000* randomNo);
 
-  await page1.evaluate(() => {
-        let elements = document.getElementsByTagName('article');
-        console.log(elements);
-        var item = elements[Math.floor(Math.random()*elements.length)];
-        var aElement= item.getElementsByTagName("a")[0];
+  // await page1.evaluate(() => {
+  //       let elements = document.getElementsByTagName('article');
+  //       console.log(elements);
+  //       var item = elements[Math.floor(Math.random()*elements.length)];
+  //       var aElement= item.getElementsByTagName("a")[0];
 
-        aElement.click();
+  //       aElement.click();
 
-    });
+  //   });
 
-  await page1.waitFor(3500 * randomNo);
-  await scrollPageToBottom(page1);
+  // await page1.waitFor(3500 * randomNo);
+  // await scrollPageToBottom(page1);
 
-  await page1.waitFor(1000 * randomNo);
-  await page.goto('http://onemboaran.com/afu.php?zoneid=3118682');
-  await page1.waitFor(2000 * randomNo);
+  // await page1.waitFor(1000 * randomNo);
+  // await page.goto('http://onemboaran.com/afu.php?zoneid=3118682');
+  // await page1.waitFor(2000 * randomNo);
   browser.close();
 };
 
