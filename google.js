@@ -8,7 +8,7 @@ const google = async () => {
     args: ['--no-sandbox']
   });
 
-  let keyWords=['consult doctor online free','doctor online free','free doctor online','consult doctor online','online free doctor','ask free doctor online']
+  let keyWords=['consult doctor online free','ask free doctor online consult']
   var randomNo=getRandomArbitrary(3,7);
   const page = await browser.newPage();
   await page.setViewport({ width: 1366, height: 768 });
