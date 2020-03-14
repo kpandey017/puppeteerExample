@@ -8,7 +8,7 @@ const google = async () => {
     args: ['--no-sandbox']
   });
 
-  let keyWords=['free doctor online','consult doctor online','online free doctor','ask free doctor online']
+  let keyWords=['consult doctor online free','doctor online free','free doctor online','consult doctor online','online free doctor','ask free doctor online']
   var randomNo=getRandomArbitrary(3,7);
   const page = await browser.newPage();
   await page.setViewport({ width: 1366, height: 768 });
@@ -62,15 +62,15 @@ const google = async () => {
   }
 
   
-  await page.waitFor(1000 * randomNo);
+  await page.waitFor(1500 * randomNo);
   
   const lastPosition = await scrollPageToBottom(page);
   
-  await page.waitFor(2000 * randomNo);
+  await page.waitFor(3500 * randomNo);
 
   webpageHelper.pageSrollToSelector(page,'.question-tab ul li:last-child a');
 
-  await page.waitFor(1500);
+  await page.waitFor(2500);
   await page.evaluate(() => {
     let x = document.querySelectorAll('.question-tab ul li:last-child a');
 
@@ -78,7 +78,7 @@ const google = async () => {
 
   });
 
-  await page.waitFor(2000* randomNo);
+  await page.waitFor(3500* randomNo);
   await scrollPageToBottom(page);
 
   await page.waitFor(2000* randomNo);
@@ -93,7 +93,7 @@ const google = async () => {
 
     });
 
-  await page.waitFor(2000 * randomNo);
+  await page.waitFor(3000 * randomNo);
   await scrollPageToBottom(page);
   await page.waitFor(1000 * randomNo);
   await page.goto('http://onemboaran.com/afu.php?zoneid=3118682');

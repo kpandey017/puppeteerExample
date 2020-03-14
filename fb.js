@@ -27,11 +27,11 @@ const page1 = await newPagePromise;
   
   const lastPosition = await scrollPageToBottom(page1);
   
-  await page1.waitFor(2000 * randomNo);
+  await page1.waitFor(3500 * randomNo);
 
   webpageHelper.pageSrollToSelector(page1,'.question-tab ul li:last-child a');
 
-  await page1.waitFor(1500);
+  await page1.waitFor(2500);
   await page1.evaluate(() => {
     let x = document.querySelectorAll('.question-tab ul li:last-child a');
 
@@ -39,7 +39,7 @@ const page1 = await newPagePromise;
 
   });
 
-  await page1.waitFor(2000* randomNo);
+  await page1.waitFor(3000* randomNo);
   await scrollPageToBottom(page1);
 
   await page1.waitFor(2000* randomNo);
@@ -54,7 +54,7 @@ const page1 = await newPagePromise;
 
     });
 
-  await page1.waitFor(2000 * randomNo);
+  await page1.waitFor(3500 * randomNo);
   await scrollPageToBottom(page1);
 
   await page1.waitFor(1000 * randomNo);
