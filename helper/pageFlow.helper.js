@@ -38,7 +38,7 @@ exports.executeFlow= async function scrollDown(page1,randomNo) {
     await scrollPageToBottom(page1);
 
     //adClick   
-    if(randomNo==4){
+    if(randomNo>=4 && randomNo<5){
      
         let allEle =[];
         await page1.evaluate(async () => {
