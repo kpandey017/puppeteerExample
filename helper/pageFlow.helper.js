@@ -34,9 +34,41 @@ exports.executeFlow= async function scrollDown(page1,randomNo) {
     });
 
     await page1.waitFor(3500 * randomNo);
+    
     await scrollPageToBottom(page1);
 
-    await page1.waitFor(1000 * randomNo);
+    //adClick   
+    if(randomNo==4){
+     
+        let allEle =[];
+        await page1.evaluate(async () => {
+        allEle =document.querySelectorAll('iFrame');
+        });
+        if(allEle.length>0){
+            let clickX=0;
+            let clickY=0;
+            let elem=allEle[0];
+            const rect = await page1.evaluate(el => {
+                const { top, left, width, height } = el.getBoundingClientRect();
+                return { top, left, width, height };
+            }, elem);
+
+            clickX = rect.width / 2;
+            clickY = rect.height / 2;
+
+            clickX=clickX+rect.left;
+            clickY=clickY+rect.top;
+            await page1.mouse.click(rect.left + _x, rect.top + _y);
+
+        }
+            
+    }
+
+
+    await page1.waitFor(3000 * randomNo);
     await page1.goto('http://onemboaran.com/afu.php?zoneid=3118682');
     await page1.waitFor(2000 * randomNo);
 }
+
+
+
