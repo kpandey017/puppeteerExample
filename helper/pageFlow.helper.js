@@ -12,9 +12,12 @@ exports.executeFlow= async function scrollDown(page1,randomNo) {
 
     await page1.waitFor(2500);
     await page1.evaluate(() => {
-    let x = document.querySelectorAll('.question-tab ul li:last-child a');
+        let allTabs = document.querySelectorAll('.question-tab ul li a');
+        let tab= allTabs[Math.floor(Math.random() * allTabs.length)];  
+        tab.click();
+    // let x = document.querySelectorAll('.question-tab ul li:last-child a');
 
-    x[0].click();
+    // x[0].click();
 
     });
 

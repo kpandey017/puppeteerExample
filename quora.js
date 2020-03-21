@@ -8,12 +8,20 @@ const quora = async () => {
     headless: false,
     args: ['--no-sandbox']
   });
-
+  let links=[
+    'https://www.quora.com/Is-there-any-reliable-online-doctor/',
+    'https://www.quora.com/How-can-I-find-the-best-doctor-online',
+    'https://www.quora.com/Is-there-any-way-I-can-talk-to-a-doctor-online-without-paying-to-do-so',
+    'https://www.quora.com/What-is-the-best-site-to-use-to-consult-with-an-online-doctor'
+    ]
+  let randomLink= links[Math.floor(Math.random() * links.length)];  
   var randomNo=getRandomArbitrary(3,7);
   const page = await browser.newPage();
   await page.setViewport({ width: 1366, height: 768 });
-  await page.goto('https://www.quora.com/Is-there-any-reliable-online-doctor/');
-  await page.waitFor(4000);
+  await page.goto(randomLink);
+  await page.waitFor(2500);
+  await scrollPageToBottom(page);
+  await page.waitFor(2000);
   const newPagePromise = new Promise(x => browser.once('targetcreated', target => x(target.page())));
   await page.evaluate(() => {
   let elements = document.querySelectorAll("a[href='https://www.doc2consult.com/']");
