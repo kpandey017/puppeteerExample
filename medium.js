@@ -19,20 +19,6 @@ const medium = async () => {
   let page = await browser.newPage();
   await page.setViewport({ width: 1366, height: 768 });
 
-
-  let allDummylinks=['https://www.rediff.com/','https://www.amazon.com/','https://edition.cnn.com/','https://www.alibaba.com','https://www.wired.com']
-  let randomDummyLink= allDummylinks[Math.floor(Math.random() * allDummylinks.length)];  
-  await page.goto(randomDummyLink);
-  await page.waitFor(2000);
-  await page.goto('chrome-extension://hfakmobdogkmkjbjffbdcceefcidoiff/html/welcome.html');
-  await page.waitFor(1000);
-  await page.evaluate(() => {
-    let acceptBtn = document.getElementById('accept');
-    acceptBtn.click();
-  });
-  await page.waitFor(1000);
-  page = await browser.newPage();
-
   await page.goto('https://medium.com/@99prmedia/doc2consult-consult-doctor-online-afd04dbb3b55');
   await page.waitFor(4000);
   const newPagePromise = new Promise(x => browser.once('targetcreated', target => x(target.page())));
