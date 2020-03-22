@@ -4,15 +4,36 @@ let webpageHelper= require('./helper/webPage.helper')
 let pageFlow= require('./helper/pageFlow.helper');
 
 const google = async () => {
+  const basePath = process.cwd();
+  const cookieIgnorePath = `${basePath}/extensions/cookieconsent`
   const browser = await puppeteer.launch({
-    headless: false,
-    args: ['--no-sandbox']
+      headless: false,
+      args: [
+        '--no-sandbox',
+        `--disable-extensions-except=${cookieIgnorePath}`,
+        `--load-extension=${cookieIgnorePath}`,
+    ]
   });
 
   let keyWords=['consult doctor online free','ask free doctor online consult']
   var randomNo=getRandomArbitrary(3,7);
-  const page = await browser.newPage();
+  let page = await browser.newPage();
   await page.setViewport({ width: 1366, height: 768 });
+
+
+  let allDummylinks=['https://www.rediff.com/','https://www.amazon.com/','https://edition.cnn.com/','https://www.alibaba.com','https://www.wired.com']
+  let randomDummyLink= allDummylinks[Math.floor(Math.random() * allDummylinks.length)];  
+  await page.goto(randomDummyLink);
+  await page.waitFor(2000);
+  await page.goto('chrome-extension://hfakmobdogkmkjbjffbdcceefcidoiff/html/welcome.html');
+  await page.waitFor(1000);
+  await page.evaluate(() => {
+    let acceptBtn = document.getElementById('accept');
+    acceptBtn.click();
+  });
+  await page.waitFor(1000);
+  page = await browser.newPage();
+
   await page.goto('https://www.google.com');
   await page.type('input.gLFyf.gsfi', keyWords[Math.floor(Math.random() * keyWords.length)]);
   page.keyboard.press('Enter');
