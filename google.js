@@ -10,7 +10,7 @@ const google = async () => {
         '--no-sandbox'    ]
   });
 
-  let keyWords=['consult doctor online free','ask free doctor online consult','consult doctor online for free','free online doctor consult','ask a doctor online free','ask a doctor free online'];
+  let keyWords=['consult doctor online free','ask free doctor online consult','consult doctor online for free','free online doctor consult','ask a doctor online free','ask a doctor free online','free doc consultation'];
   var randomNo=getRandomArbitrary(3,7);
   let page = await browser.newPage();
   await page.setViewport({ width: 1366, height: 768 });
