@@ -4,14 +4,10 @@ let webpageHelper= require('./helper/webPage.helper')
 let pageFlow= require('./helper/pageFlow.helper');
 
 const linkedin = async () => {
-  const basePath = process.cwd();
-  const cookieIgnorePath = `${basePath}/extensions/cookieconsent`
   const browser = await puppeteer.launch({
       headless: false,
       args: [
-        '--no-sandbox',
-        `--disable-extensions-except=${cookieIgnorePath}`,
-        `--load-extension=${cookieIgnorePath}`,
+        '--no-sandbox'
     ]
   });
 

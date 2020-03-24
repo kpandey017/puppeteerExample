@@ -5,8 +5,9 @@ const linkedin = require('./linkedin');
 const quora = require('./quora');
 const medium = require('./medium');
 const twitter = require('./twitter');
+const reddit = require('./reddit');
 
-var array = ['F1','F2','F3','F4','F5','F6']
+var array = ['F1','F2','F3','F4','F5','F6','F7']
 
 var ranFunc;
 
@@ -32,6 +33,9 @@ function start() { // Randomly Execute Function
 
   if (ranFunc == 'F6') {
     twitter()
+  }
+  if (ranFunc == 'F7') {
+    reddit()
   }
 
 }

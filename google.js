@@ -4,18 +4,13 @@ let webpageHelper= require('./helper/webPage.helper')
 let pageFlow= require('./helper/pageFlow.helper');
 
 const google = async () => {
-  const basePath = process.cwd();
-  const cookieIgnorePath = `${basePath}/extensions/cookieconsent`
   const browser = await puppeteer.launch({
       headless: false,
       args: [
-        '--no-sandbox',
-        `--disable-extensions-except=${cookieIgnorePath}`,
-        `--load-extension=${cookieIgnorePath}`,
-    ]
+        '--no-sandbox'    ]
   });
 
-  let keyWords=['consult doctor online free','ask free doctor online consult','consult doctor online for free','free online doctor consult','ask a doctor online free','ask a doctor free online']
+  let keyWords=['consult doctor online free','ask free doctor online consult','consult doctor online for free','free online doctor consult','ask a doctor online free','ask a doctor free online'];
   var randomNo=getRandomArbitrary(3,7);
   let page = await browser.newPage();
   await page.setViewport({ width: 1366, height: 768 });
